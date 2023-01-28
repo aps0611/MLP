@@ -1,0 +1,5297 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "0c4818fa",
+   "metadata": {},
+   "source": [
+    "# NumPy: Numerical Python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9c2ddaf1",
+   "metadata": {},
+   "source": [
+    "Numpy is basic package for scientific computing."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "600fd2df",
+   "metadata": {},
+   "source": [
+    "Benefits:\n",
+    "    1. ndarray: vectorised artmetic operations\n",
+    "    2. Fast operations on arrays without need to write the loops\n",
+    "    3. Linear algebra, fourier transformation, random number generation\n",
+    "    4. Broadcasting and other topics\n",
+    "    etc.."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "52a37c29",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np #linear algebra"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e842170c",
+   "metadata": {},
+   "source": [
+    "N-Dimensional array object:(ndarray): Efficient multi-dimensional container for general data"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8853437d",
+   "metadata": {},
+   "source": [
+    "# Contents:\n",
+    "1. Creating Array\n",
+    "2. Features of ndarray\n",
+    "3. Creating specific array\n",
+    "4. Shape and Operation\n",
+    "5. Indexing\n",
+    "6. Boolean Indexing\n",
+    "7. Fancy Indexing\n",
+    "8. Mathematics\n",
+    "9. Random Number\n",
+    "10. Matrix\n",
+    "11. Functions and More Operations\n",
+    "12. Broadcasting\n",
+    "13. Universal Functions\n",
+    "14. Data Processing using Arrays\n",
+    "15. Sorting"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "a763b471",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 2, 3]"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[1,2,3] #Array of rank 1 and length of axis 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "d1213193",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[[1, 2, 3], [4, 5, 6]]"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[[1,2,3],[4,5,6]] #Array of rank 2 and length of axis is 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "86686f73",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "44816376",
+   "metadata": {},
+   "source": [
+    "# CREATING THE ARRAY:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d9dccd87",
+   "metadata": {},
+   "source": [
+    "Easiest Way is to call function np.array([1,2,3,4,5])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "8a011491",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "7c11dc2f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = np.array([1,2,3])\n",
+    "b = np.array([(1,2,3),(4,5,6)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "7086d891",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "a: [1 2 3]\n",
+      "b: [[1 2 3]\n",
+      " [4 5 6]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print('a:',a)\n",
+    "print('b:',b)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "d237e65f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.ndarray"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "165227bd",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array(['1', '2', '3', 'abh', 'd'], dtype='<U21')"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array([1,2,3,'abh','d']) #here all are string"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bb15057c",
+   "metadata": {},
+   "source": [
+    "##### STORES 'HOMOGENOUS DATA': i.e. Everything is same data type"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "5347acb2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 3, 4])"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array([1,2,3,4]) #HERE all are int"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "c51fa240",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1.1 , 2.  , 3.  , 4.  , 0.56])"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array([1.1,2,3,4,0.56]) #here all are float"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "1aa2493c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2],\n",
+       "       [3, 4]])"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array([(1,2),(3,4)]) #2D Array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "392aff63",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[1, 2, 3],\n",
+       "        [4, 5, 6]],\n",
+       "\n",
+       "       [[1, 2, 3],\n",
+       "        [4, 5, 6]]])"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array([[[1,2,3],[4,5,6]],[[1,2,3],[4,5,6]]]) #3D array"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e489312e",
+   "metadata": {},
+   "source": [
+    "# Features of ndarray:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "24948cbe",
+   "metadata": {},
+   "source": [
+    "1. ndarray.ndim: the dimension number of the array. It's called rank in Python.\n",
+    "2. ndarray.shape: the dimension of the array. It's a series of numbers whose length is determined by the dimension （ndim） of the array. For example, the shape of a one-dimensional array with length n is n. And the shape of an array with n rows and m columns is n,m.\n",
+    "3. ndarray.size: the number of all elements in the array.\n",
+    "4. ndarray.dtype: the type of the element in the array, such as numpy.int32, numpy.int16, or numpy.float64.\n",
+    "5. ndarray.itemsize: the size of each element in the array, in bytes.\n",
+    "6. ndarray.data: the buffering for storing the array elements. Usually we only need to access the elements by subscripts, and don't need to access the buffer."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "94fc6232",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = np.array([[1,2,3],[4,5,6]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "b2078c32",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 43,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.ndim"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "f4beca4f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(2, 3)"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "8c5be3c7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6"
+      ]
+     },
+     "execution_count": 45,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.size"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "2624bf80",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dtype('int64')"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.dtype"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "cfb29be4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "8"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.itemsize #size in bytes of each element"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "d09c5878",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<memory at 0x7f7943fa7110>"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a.data"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8205ce1e",
+   "metadata": {},
+   "source": [
+    "#We can specify features before creating array itself"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "58c6a18d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[1, 2, 3]]])"
+      ]
+     },
+     "execution_count": 50,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array([1,2,3], ndmin = 3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "id": "8ddb0fed",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1.+0.j, 2.+0.j, 3.+0.j])"
+      ]
+     },
+     "execution_count": 51,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array([1,2,3], dtype = complex)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "db14c5ff",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2],\n",
+       "       [3, 4]])"
+      ]
+     },
+     "execution_count": 52,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array([(1,2),(3,4)]) #gives output in list for tuples:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "2ad49e79",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = np.array([(1,2),(3,4)], dtype = [('a','<i2'),('b','<i8')])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "df4b048a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.ndarray"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "e37f0ff2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.void"
+      ]
+     },
+     "execution_count": 57,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(arr[0])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "1b444f1e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.int16"
+      ]
+     },
+     "execution_count": 58,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(arr[0][0])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "146737c5",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.int64"
+      ]
+     },
+     "execution_count": 59,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(arr[0][1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "f10c4ee7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.int16"
+      ]
+     },
+     "execution_count": 60,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(arr[1][0])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "5d3d880a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.int64"
+      ]
+     },
+     "execution_count": 61,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(arr[1][1])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4154d555",
+   "metadata": {},
+   "source": [
+    "#### i2= 16 bit | i4= 32 bit | i8= 64 bit exits.| i16 does not exits"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "id": "f9ceedab",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.matrix"
+      ]
+     },
+     "execution_count": 65,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(np.mat(arr))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "id": "12e3b46f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "matrix([[(1, 2), (3, 4)]], dtype=[('a', '<i2'), ('b', '<i8')])"
+      ]
+     },
+     "execution_count": 67,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.matrix(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "id": "a62d7a24",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "matrix([[(1, 2), (3, 4)]], dtype=[('a', '<i2'), ('b', '<i8')])"
+      ]
+     },
+     "execution_count": 68,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.mat(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a05c7ba6",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9325e279",
+   "metadata": {},
+   "source": [
+    "# Creating a specific Array:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5375fe7d",
+   "metadata": {},
+   "source": [
+    "In actual project engineering, we often need some specific data, and some helper functions are provided in NumPy:\n",
+    "\n",
+    "1. zeros: used to create an array whose elements are all 0\n",
+    "2. ones: used to create an array whose elements are all 1\n",
+    "3. empty: used to create uninitialized data. so the content is undefined.\n",
+    "4. arange: used to create an array by specifying the scope and step-length\n",
+    "5. linespace: used to create an array by specifying the range and the number of elements\n",
+    "6. random: used to generate random numbers"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 124,
+   "id": "c72ffd89",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 1, 2, 3, 4, 5]"
+      ]
+     },
+     "execution_count": 124,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "list(range(6))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 75,
+   "id": "ec770821",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "TypeError",
+     "evalue": "'float' object cannot be interpreted as an integer",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m/tmp/ipykernel_17655/2959387936.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mlist\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mrange\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m6.6\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;31m#Here we see one drawack of traditional list that we do not get the list if range is in float\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m: 'float' object cannot be interpreted as an integer"
+     ]
+    }
+   ],
+   "source": [
+    "list(range(6.6)) #Here we see one drawack of traditional list that we do not get the list if range is in float"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 76,
+   "id": "26f7c7ac",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Here arange function comes to help"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 78,
+   "id": "e90f8ebe",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([6.6, 6.9, 7.2, 7.5, 7.8, 8.1, 8.4, 8.7, 9. ])"
+      ]
+     },
+     "execution_count": 78,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.arange(6.6, 9,0.3) #gives the range with scope of 6.6 to 9 with step length of 0.3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 79,
+   "id": "ae77b3e7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0., 1., 2., 3., 4., 5., 6.])"
+      ]
+     },
+     "execution_count": 79,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.arange(6.6)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 82,
+   "id": "38ed3f68",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([9. , 8.5, 8. , 7.5, 7. ])"
+      ]
+     },
+     "execution_count": 82,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.arange(9,6.6,-0.5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 350,
+   "id": "05e24917",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1.        , 1.02040816, 1.04081633, 1.06122449, 1.08163265,\n",
+       "       1.10204082, 1.12244898, 1.14285714, 1.16326531, 1.18367347,\n",
+       "       1.20408163, 1.2244898 , 1.24489796, 1.26530612, 1.28571429,\n",
+       "       1.30612245, 1.32653061, 1.34693878, 1.36734694, 1.3877551 ,\n",
+       "       1.40816327, 1.42857143, 1.44897959, 1.46938776, 1.48979592,\n",
+       "       1.51020408, 1.53061224, 1.55102041, 1.57142857, 1.59183673,\n",
+       "       1.6122449 , 1.63265306, 1.65306122, 1.67346939, 1.69387755,\n",
+       "       1.71428571, 1.73469388, 1.75510204, 1.7755102 , 1.79591837,\n",
+       "       1.81632653, 1.83673469, 1.85714286, 1.87755102, 1.89795918,\n",
+       "       1.91836735, 1.93877551, 1.95918367, 1.97959184, 2.        ])"
+      ]
+     },
+     "execution_count": 350,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.linspace(1,2) #By default it is 50"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 84,
+   "id": "c19ad701",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1.  , 1.25, 1.5 , 1.75, 2.  ])"
+      ]
+     },
+     "execution_count": 84,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.linspace(1,2,5) # it generate equally spaced five element between 1-2 range"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "id": "d5ee372e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0., 0., 0., 0., 0.])"
+      ]
+     },
+     "execution_count": 85,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.zeros(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "49ff2922",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 86,
+   "id": "213721f6",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0., 0., 0., 0., 0.],\n",
+       "       [0., 0., 0., 0., 0.]])"
+      ]
+     },
+     "execution_count": 86,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.zeros((2,5))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 87,
+   "id": "fb11ffcf",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[0., 0., 0., 0.],\n",
+       "        [0., 0., 0., 0.],\n",
+       "        [0., 0., 0., 0.],\n",
+       "        [0., 0., 0., 0.],\n",
+       "        [0., 0., 0., 0.]],\n",
+       "\n",
+       "       [[0., 0., 0., 0.],\n",
+       "        [0., 0., 0., 0.],\n",
+       "        [0., 0., 0., 0.],\n",
+       "        [0., 0., 0., 0.],\n",
+       "        [0., 0., 0., 0.]]])"
+      ]
+     },
+     "execution_count": 87,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.zeros((2,5,4))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 88,
+   "id": "03a5667f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1., 1., 1., 1.])"
+      ]
+     },
+     "execution_count": 88,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.ones(4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 89,
+   "id": "cbcb181c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1., 1., 1.],\n",
+       "       [1., 1., 1.]])"
+      ]
+     },
+     "execution_count": 89,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.ones((2,3))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 90,
+   "id": "28b4b1de",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0., 0., 0., 0., 0.])"
+      ]
+     },
+     "execution_count": 90,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.empty(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 91,
+   "id": "dc125884",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[6.92476823e-310, 4.68985330e-310, 0.00000000e+000,\n",
+       "        0.00000000e+000],\n",
+       "       [0.00000000e+000, 5.30276956e+180, 6.00736842e-067,\n",
+       "        4.31300550e+097],\n",
+       "       [2.74448149e-057, 3.41979022e+126, 4.25223142e+180,\n",
+       "        7.48543529e+247]])"
+      ]
+     },
+     "execution_count": 91,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.empty((3,4)) #generates random output"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 92,
+   "id": "5b2f16b5",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1., 0., 0.],\n",
+       "       [0., 1., 0.],\n",
+       "       [0., 0., 1.]])"
+      ]
+     },
+     "execution_count": 92,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.eye(3) #identity set"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 95,
+   "id": "e90faba8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([2. , 2.5, 3. , 3.5])"
+      ]
+     },
+     "execution_count": 95,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.linspace(2,4,4, endpoint = False) #Open brace at end"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 96,
+   "id": "e7b10eda",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([2.        , 2.66666667, 3.33333333, 4.        ])"
+      ]
+     },
+     "execution_count": 96,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.linspace(2,4,4, endpoint = True) #Close brace at end"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 105,
+   "id": "4df0c0e3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[2.        , 1.97959184, 1.95918367, 1.93877551, 1.91836735,\n",
+       "        1.89795918, 1.87755102, 1.85714286, 1.83673469, 1.81632653,\n",
+       "        1.79591837, 1.7755102 , 1.75510204, 1.73469388, 1.71428571,\n",
+       "        1.69387755, 1.67346939, 1.65306122, 1.63265306, 1.6122449 ,\n",
+       "        1.59183673, 1.57142857, 1.55102041, 1.53061224, 1.51020408,\n",
+       "        1.48979592, 1.46938776, 1.44897959, 1.42857143, 1.40816327,\n",
+       "        1.3877551 , 1.36734694, 1.34693878, 1.32653061, 1.30612245,\n",
+       "        1.28571429, 1.26530612, 1.24489796, 1.2244898 , 1.20408163,\n",
+       "        1.18367347, 1.16326531, 1.14285714, 1.12244898, 1.10204082,\n",
+       "        1.08163265, 1.06122449, 1.04081633, 1.02040816, 1.        ],\n",
+       "       [4.        , 3.93877551, 3.87755102, 3.81632653, 3.75510204,\n",
+       "        3.69387755, 3.63265306, 3.57142857, 3.51020408, 3.44897959,\n",
+       "        3.3877551 , 3.32653061, 3.26530612, 3.20408163, 3.14285714,\n",
+       "        3.08163265, 3.02040816, 2.95918367, 2.89795918, 2.83673469,\n",
+       "        2.7755102 , 2.71428571, 2.65306122, 2.59183673, 2.53061224,\n",
+       "        2.46938776, 2.40816327, 2.34693878, 2.28571429, 2.2244898 ,\n",
+       "        2.16326531, 2.10204082, 2.04081633, 1.97959184, 1.91836735,\n",
+       "        1.85714286, 1.79591837, 1.73469388, 1.67346939, 1.6122449 ,\n",
+       "        1.55102041, 1.48979592, 1.42857143, 1.36734694, 1.30612245,\n",
+       "        1.24489796, 1.18367347, 1.12244898, 1.06122449, 1.        ],\n",
+       "       [1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ,\n",
+       "        1.        , 1.        , 1.        , 1.        , 1.        ]])"
+      ]
+     },
+     "execution_count": 105,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.linspace([2,4,1],1, axis = 1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 107,
+   "id": "d845dd38",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[2.        , 4.        , 1.        ],\n",
+       "       [2.02040816, 3.97959184, 1.04081633],\n",
+       "       [2.04081633, 3.95918367, 1.08163265],\n",
+       "       [2.06122449, 3.93877551, 1.12244898],\n",
+       "       [2.08163265, 3.91836735, 1.16326531],\n",
+       "       [2.10204082, 3.89795918, 1.20408163],\n",
+       "       [2.12244898, 3.87755102, 1.24489796],\n",
+       "       [2.14285714, 3.85714286, 1.28571429],\n",
+       "       [2.16326531, 3.83673469, 1.32653061],\n",
+       "       [2.18367347, 3.81632653, 1.36734694],\n",
+       "       [2.20408163, 3.79591837, 1.40816327],\n",
+       "       [2.2244898 , 3.7755102 , 1.44897959],\n",
+       "       [2.24489796, 3.75510204, 1.48979592],\n",
+       "       [2.26530612, 3.73469388, 1.53061224],\n",
+       "       [2.28571429, 3.71428571, 1.57142857],\n",
+       "       [2.30612245, 3.69387755, 1.6122449 ],\n",
+       "       [2.32653061, 3.67346939, 1.65306122],\n",
+       "       [2.34693878, 3.65306122, 1.69387755],\n",
+       "       [2.36734694, 3.63265306, 1.73469388],\n",
+       "       [2.3877551 , 3.6122449 , 1.7755102 ],\n",
+       "       [2.40816327, 3.59183673, 1.81632653],\n",
+       "       [2.42857143, 3.57142857, 1.85714286],\n",
+       "       [2.44897959, 3.55102041, 1.89795918],\n",
+       "       [2.46938776, 3.53061224, 1.93877551],\n",
+       "       [2.48979592, 3.51020408, 1.97959184],\n",
+       "       [2.51020408, 3.48979592, 2.02040816],\n",
+       "       [2.53061224, 3.46938776, 2.06122449],\n",
+       "       [2.55102041, 3.44897959, 2.10204082],\n",
+       "       [2.57142857, 3.42857143, 2.14285714],\n",
+       "       [2.59183673, 3.40816327, 2.18367347],\n",
+       "       [2.6122449 , 3.3877551 , 2.2244898 ],\n",
+       "       [2.63265306, 3.36734694, 2.26530612],\n",
+       "       [2.65306122, 3.34693878, 2.30612245],\n",
+       "       [2.67346939, 3.32653061, 2.34693878],\n",
+       "       [2.69387755, 3.30612245, 2.3877551 ],\n",
+       "       [2.71428571, 3.28571429, 2.42857143],\n",
+       "       [2.73469388, 3.26530612, 2.46938776],\n",
+       "       [2.75510204, 3.24489796, 2.51020408],\n",
+       "       [2.7755102 , 3.2244898 , 2.55102041],\n",
+       "       [2.79591837, 3.20408163, 2.59183673],\n",
+       "       [2.81632653, 3.18367347, 2.63265306],\n",
+       "       [2.83673469, 3.16326531, 2.67346939],\n",
+       "       [2.85714286, 3.14285714, 2.71428571],\n",
+       "       [2.87755102, 3.12244898, 2.75510204],\n",
+       "       [2.89795918, 3.10204082, 2.79591837],\n",
+       "       [2.91836735, 3.08163265, 2.83673469],\n",
+       "       [2.93877551, 3.06122449, 2.87755102],\n",
+       "       [2.95918367, 3.04081633, 2.91836735],\n",
+       "       [2.97959184, 3.02040816, 2.95918367],\n",
+       "       [3.        , 3.        , 3.        ]])"
+      ]
+     },
+     "execution_count": 107,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.linspace([2,4,1],3, axis = 0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 108,
+   "id": "8ba912e9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 100.        ,  104.81131342,  109.8541142 ,  115.13953993,\n",
+       "        120.67926406,  126.48552169,  132.57113656,  138.94954944,\n",
+       "        145.63484775,  152.64179672,  159.98587196,  167.68329368,\n",
+       "        175.75106249,  184.20699693,  193.06977289,  202.35896477,\n",
+       "        212.09508879,  222.29964825,  232.99518105,  244.20530945,\n",
+       "        255.95479227,  268.26957953,  281.1768698 ,  294.70517026,\n",
+       "        308.88435965,  323.74575428,  339.32217719,  355.64803062,\n",
+       "        372.75937203,  390.69399371,  409.49150624,  429.19342601,\n",
+       "        449.8432669 ,  471.48663635,  494.17133613,  517.94746792,\n",
+       "        542.86754393,  568.9866029 ,  596.36233166,  625.05519253,\n",
+       "        655.12855686,  686.648845  ,  719.685673  ,  754.31200634,\n",
+       "        790.60432109,  828.64277285,  868.51137375,  910.29817799,\n",
+       "        954.09547635, 1000.        ])"
+      ]
+     },
+     "execution_count": 108,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.logspace(2,3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 102,
+   "id": "4803db3f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "d = np.linspace(4,7,40)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 160,
+   "id": "33cf7a39",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([4.        , 4.07692308, 4.15384615, 4.23076923, 4.30769231,\n",
+       "       4.38461538, 4.46153846, 4.53846154, 4.61538462, 4.69230769,\n",
+       "       4.76923077, 4.84615385, 4.92307692, 5.        , 5.07692308,\n",
+       "       5.15384615, 5.23076923, 5.30769231, 5.38461538, 5.46153846,\n",
+       "       5.53846154, 5.61538462, 5.69230769, 5.76923077, 5.84615385,\n",
+       "       5.92307692, 6.        , 6.07692308, 6.15384615, 6.23076923,\n",
+       "       6.30769231, 6.38461538, 6.46153846, 6.53846154, 6.61538462,\n",
+       "       6.69230769, 6.76923077, 6.84615385, 6.92307692, 7.        ])"
+      ]
+     },
+     "execution_count": 160,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a2a2d9e1",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5ed6ea08",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "07611361",
+   "metadata": {},
+   "source": [
+    "# SHAPE AND OPERATION"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "746b296a",
+   "metadata": {},
+   "source": [
+    "1. reshape: used to generate a new array based on the existing array and the specified shape\n",
+    "2. vstack: used to stack multiple arrays in vertical direction (the dimensions of the array must be matched)\n",
+    "3. hstack: used to stack multiple arrays in horizontal direction (the dimensions of the array must be matched)\n",
+    "4. hsplit: used to split the array horizontally\n",
+    "5. vsplit: used to split the array vertically\n",
+    "6. concatenate: Joins"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 120,
+   "id": "7201b015",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "zero_line = np.zeros((1,3))\n",
+    "one_column = np.ones((3,1))\n",
+    "a1 = np.array([[1,2,3],[4,5,6]])\n",
+    "b1 = np.arange(11,20)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 122,
+   "id": "1a49b918",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([11, 12, 13, 14, 15, 16, 17, 18, 19])"
+      ]
+     },
+     "execution_count": 122,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "aaf091b7",
+   "metadata": {},
+   "source": [
+    "The array b is a one-dimensional array originally, and we resize it into a matrix of 3 rows and 3 columns by the reshape method:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 127,
+   "id": "b0bdd33c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[11, 12, 13],\n",
+       "       [14, 15, 16],\n",
+       "       [17, 18, 19]])"
+      ]
+     },
+     "execution_count": 127,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b1.reshape(3,3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 132,
+   "id": "e6b6c3cb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[11],\n",
+       "        [12],\n",
+       "        [13]],\n",
+       "\n",
+       "       [[14],\n",
+       "        [15],\n",
+       "        [16]],\n",
+       "\n",
+       "       [[17],\n",
+       "        [18],\n",
+       "        [19]]])"
+      ]
+     },
+     "execution_count": 132,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b1.reshape(3,3,1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 133,
+   "id": "2b82b907",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[11, 12, 13]],\n",
+       "\n",
+       "       [[14, 15, 16]],\n",
+       "\n",
+       "       [[17, 18, 19]]])"
+      ]
+     },
+     "execution_count": 133,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b1.reshape(3,1,3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 142,
+   "id": "510e6004",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "b1= b1.reshape(3,-1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3095dc63",
+   "metadata": {},
+   "source": [
+    "The second parameter here is set to -1, which means that it'll be determined based on actual conditions automatically. Since the array has 9 elements originally, the matrix after being resized is 3X3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "100542f0",
+   "metadata": {},
+   "source": [
+    "###### stack the three arrays vertically through the vstack function:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 145,
+   "id": "2c93ee71",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "c = np.vstack((a1,zero_line,b1))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 146,
+   "id": "0b2e536b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.,  2.,  3.],\n",
+       "       [ 4.,  5.,  6.],\n",
+       "       [ 0.,  0.,  0.],\n",
+       "       [11., 12., 13.],\n",
+       "       [14., 15., 16.],\n",
+       "       [17., 18., 19.]])"
+      ]
+     },
+     "execution_count": 146,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "c"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "93a8b59f",
+   "metadata": {},
+   "source": [
+    "###### stack the three arrays horizontally through the hstack function:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 147,
+   "id": "ab06e1be",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a1 = a1.reshape(3,2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 151,
+   "id": "0c8361e1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "e = np.hstack((a1,b1,one_column))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 152,
+   "id": "54035653",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.,  2., 11., 12., 13.,  1.],\n",
+       "       [ 3.,  4., 14., 15., 16.,  1.],\n",
+       "       [ 5.,  6., 17., 18., 19.,  1.]])"
+      ]
+     },
+     "execution_count": 152,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "e"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2fd8d802",
+   "metadata": {},
+   "source": [
+    "###### SPLIT FUNCTION"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 159,
+   "id": "fac2ed1a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "F = np.hsplit(e,3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 161,
+   "id": "4d6b7e06",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[array([[1., 2.],\n",
+       "        [3., 4.],\n",
+       "        [5., 6.]]),\n",
+       " array([[11., 12.],\n",
+       "        [14., 15.],\n",
+       "        [17., 18.]]),\n",
+       " array([[13.,  1.],\n",
+       "        [16.,  1.],\n",
+       "        [19.,  1.]])]"
+      ]
+     },
+     "execution_count": 161,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "F"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 163,
+   "id": "358975c3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "G = np.vsplit(e,3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 164,
+   "id": "d6d8a3df",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[array([[ 1.,  2., 11., 12., 13.,  1.]]),\n",
+       " array([[ 3.,  4., 14., 15., 16.,  1.]]),\n",
+       " array([[ 5.,  6., 17., 18., 19.,  1.]])]"
+      ]
+     },
+     "execution_count": 164,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "G"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fa2f74db",
+   "metadata": {},
+   "source": [
+    "In addition to specifying number to split the array evenly, we can also specify the number of columns to split. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 168,
+   "id": "bcac0a2a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "F1 = np.hsplit(e,(1,3)) #splits e after the first and third column"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 169,
+   "id": "34f2f99f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[array([[1.],\n",
+       "        [3.],\n",
+       "        [5.]]),\n",
+       " array([[ 2., 11.],\n",
+       "        [ 4., 14.],\n",
+       "        [ 6., 17.]]),\n",
+       " array([[12., 13.,  1.],\n",
+       "        [15., 16.,  1.],\n",
+       "        [18., 19.,  1.]])]"
+      ]
+     },
+     "execution_count": 169,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "F1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 170,
+   "id": "b7e748f1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "G1 = np.vsplit(e,3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 171,
+   "id": "dd519760",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[array([[ 1.,  2., 11., 12., 13.,  1.]]),\n",
+       " array([[ 3.,  4., 14., 15., 16.,  1.]]),\n",
+       " array([[ 5.,  6., 17., 18., 19.,  1.]])]"
+      ]
+     },
+     "execution_count": 171,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "G1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 172,
+   "id": "c1ef8da8",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "array split does not result in an equal division",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m/tmp/ipykernel_17655/2007437122.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mG2\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mvsplit\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0me\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m2\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32m<__array_function__ internals>\u001b[0m in \u001b[0;36mvsplit\u001b[0;34m(*args, **kwargs)\u001b[0m\n",
+      "\u001b[0;32m~/anaconda3/lib/python3.9/site-packages/numpy/lib/shape_base.py\u001b[0m in \u001b[0;36mvsplit\u001b[0;34m(ary, indices_or_sections)\u001b[0m\n\u001b[1;32m    989\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0m_nx\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mndim\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mary\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;34m<\u001b[0m \u001b[0;36m2\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    990\u001b[0m         \u001b[0;32mraise\u001b[0m \u001b[0mValueError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'vsplit only works on arrays of 2 or more dimensions'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 991\u001b[0;31m     \u001b[0;32mreturn\u001b[0m \u001b[0msplit\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mary\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mindices_or_sections\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m0\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    992\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    993\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m<__array_function__ internals>\u001b[0m in \u001b[0;36msplit\u001b[0;34m(*args, **kwargs)\u001b[0m\n",
+      "\u001b[0;32m~/anaconda3/lib/python3.9/site-packages/numpy/lib/shape_base.py\u001b[0m in \u001b[0;36msplit\u001b[0;34m(ary, indices_or_sections, axis)\u001b[0m\n\u001b[1;32m    870\u001b[0m         \u001b[0mN\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mary\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0maxis\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    871\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mN\u001b[0m \u001b[0;34m%\u001b[0m \u001b[0msections\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 872\u001b[0;31m             raise ValueError(\n\u001b[0m\u001b[1;32m    873\u001b[0m                 'array split does not result in an equal division') from None\n\u001b[1;32m    874\u001b[0m     \u001b[0;32mreturn\u001b[0m \u001b[0marray_split\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mary\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mindices_or_sections\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0maxis\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mValueError\u001b[0m: array split does not result in an equal division"
+     ]
+    }
+   ],
+   "source": [
+    "G2 = np.vsplit(e,2) #Look for equal split"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 351,
+   "id": "e1480931",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[ 1.,  2., 11., 12., 13.,  1.]],\n",
+       "\n",
+       "       [[ 3.,  4., 14., 15., 16.,  1.]],\n",
+       "\n",
+       "       [[ 5.,  6., 17., 18., 19.,  1.]],\n",
+       "\n",
+       "       [[ 1.,  2., 11., 12., 13.,  1.]],\n",
+       "\n",
+       "       [[ 3.,  4., 14., 15., 16.,  1.]],\n",
+       "\n",
+       "       [[ 5.,  6., 17., 18., 19.,  1.]]])"
+      ]
+     },
+     "execution_count": 351,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.concatenate([G1,G1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a734f2d4",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0924673e",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "77813ae0",
+   "metadata": {},
+   "source": [
+    "# INDEXING"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a535af5e",
+   "metadata": {},
+   "source": [
+    "To access the data in NumPy arrays::"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 173,
+   "id": "191b1aab",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "base_data = np.arange(100,200)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 174,
+   "id": "069fe186",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112,\n",
+       "       113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125,\n",
+       "       126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138,\n",
+       "       139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151,\n",
+       "       152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164,\n",
+       "       165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177,\n",
+       "       178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190,\n",
+       "       191, 192, 193, 194, 195, 196, 197, 198, 199])"
+      ]
+     },
+     "execution_count": 174,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 175,
+   "id": "cadc8a49",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "110"
+      ]
+     },
+     "execution_count": 175,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data[10]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 176,
+   "id": "ffdd7e26",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Creating subscripts to get the element in the target array: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 177,
+   "id": "0bfa6228",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "every_five = np.arange(0,100,5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 178,
+   "id": "dc6be258",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 0,  5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80,\n",
+       "       85, 90, 95])"
+      ]
+     },
+     "execution_count": 178,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "every_five"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 179,
+   "id": "1dab7dbb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160,\n",
+       "       165, 170, 175, 180, 185, 190, 195])"
+      ]
+     },
+     "execution_count": 179,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data[every_five]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 180,
+   "id": "29a3984c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Creating 2D subscript and calling the data in target array:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 181,
+   "id": "1783ac65",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "h = np.array([[1,2],[10,20]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 184,
+   "id": "3d45ff47",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[101, 102],\n",
+       "       [110, 120]])"
+      ]
+     },
+     "execution_count": 184,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data[h]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 185,
+   "id": "9a3c96b1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "base_data2 = base_data.reshape(10,-1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 186,
+   "id": "12ff8e1f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[100, 101, 102, 103, 104, 105, 106, 107, 108, 109],\n",
+       "       [110, 111, 112, 113, 114, 115, 116, 117, 118, 119],\n",
+       "       [120, 121, 122, 123, 124, 125, 126, 127, 128, 129],\n",
+       "       [130, 131, 132, 133, 134, 135, 136, 137, 138, 139],\n",
+       "       [140, 141, 142, 143, 144, 145, 146, 147, 148, 149],\n",
+       "       [150, 151, 152, 153, 154, 155, 156, 157, 158, 159],\n",
+       "       [160, 161, 162, 163, 164, 165, 166, 167, 168, 169],\n",
+       "       [170, 171, 172, 173, 174, 175, 176, 177, 178, 179],\n",
+       "       [180, 181, 182, 183, 184, 185, 186, 187, 188, 189],\n",
+       "       [190, 191, 192, 193, 194, 195, 196, 197, 198, 199]])"
+      ]
+     },
+     "execution_count": 186,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "befbb6df",
+   "metadata": {},
+   "source": [
+    "#For 2 dimension array if we specify only one subscript then the result of the array is again still the array\n",
+    "#If we specify 2 subsciripts then the result is an element inside the array. Also, we can specify the last element by -1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 188,
+   "id": "82d62679",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([120, 121, 122, 123, 124, 125, 126, 127, 128, 129])"
+      ]
+     },
+     "execution_count": 188,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data2[2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 192,
+   "id": "ffac4499",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "120"
+      ]
+     },
+     "execution_count": 192,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data2[2,0]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 193,
+   "id": "05865aa3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "129"
+      ]
+     },
+     "execution_count": 193,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data2[2,-1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e90a06ab",
+   "metadata": {},
+   "source": [
+    "#Also it is possible to specify the scope using :"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6d4ca60d",
+   "metadata": {},
+   "source": [
+    "get all the elements of the row whose subscript is 2\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 202,
+   "id": "efb27776",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([120, 121, 122, 123, 124, 125, 126, 127, 128, 129])"
+      ]
+     },
+     "execution_count": 202,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data2[2,:]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8b1d87bf",
+   "metadata": {},
+   "source": [
+    "get all the elements of the column whose subscript is 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 203,
+   "id": "c1e1cccb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([103, 113, 123, 133, 143, 153, 163, 173, 183, 193])"
+      ]
+     },
+     "execution_count": 203,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data2[:,3]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fffbfd0b",
+   "metadata": {},
+   "source": [
+    "get all the elements of the rows whose subscripts are in [2,5) and the columns * whose subscripts are in [2,4). Please observe the following output carefully:\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 204,
+   "id": "9699f448",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[122, 123],\n",
+       "       [132, 133],\n",
+       "       [142, 143]])"
+      ]
+     },
+     "execution_count": 204,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data2[2:5,2:4]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "821e638e",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c4bd67fa",
+   "metadata": {},
+   "source": [
+    "# BOOLEAN INDEXING"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 367,
+   "id": "a42677fd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "names = np.array(['Akshay','Kstbh', 'Rushi', 'Wade', 'Nitesh', 'Chavo', 'Andy'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 368,
+   "id": "f3a5d3d2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = np.random.randn(7,4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 371,
+   "id": "e7d44aa9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.20347646,  1.00202998,  1.19999391, -0.5654574 ],\n",
+       "       [ 0.48143999,  0.71599769,  0.98416092, -0.58049787],\n",
+       "       [-0.23920082,  0.12230214, -0.64597345, -0.58648222],\n",
+       "       [-1.0762005 ,  0.96094643, -0.16795883, -0.75962566],\n",
+       "       [-0.08847409,  0.84202832, -1.13242452,  0.803194  ],\n",
+       "       [ 0.55259956,  1.92223808, -0.98763991,  0.58423728],\n",
+       "       [ 0.03966446, -1.28697128,  0.00377739,  0.40787108]])"
+      ]
+     },
+     "execution_count": 371,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 369,
+   "id": "89e6c50f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ True, False, False, False, False, False, False])"
+      ]
+     },
+     "execution_count": 369,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "names == 'Akshay'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 372,
+   "id": "869eb228",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.20347646,  1.00202998,  1.19999391, -0.5654574 ]])"
+      ]
+     },
+     "execution_count": 372,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data[names=='Akshay'] #Boolean array can be passed when indexing the array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 374,
+   "id": "2305ffff",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[-0.98763991,  0.58423728]])"
+      ]
+     },
+     "execution_count": 374,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data[names =='Chavo',2:]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 376,
+   "id": "232d0712",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.48143999,  0.71599769,  0.98416092, -0.58049787],\n",
+       "       [-0.23920082,  0.12230214, -0.64597345, -0.58648222],\n",
+       "       [-1.0762005 ,  0.96094643, -0.16795883, -0.75962566],\n",
+       "       [-0.08847409,  0.84202832, -1.13242452,  0.803194  ],\n",
+       "       [ 0.55259956,  1.92223808, -0.98763991,  0.58423728],\n",
+       "       [ 0.03966446, -1.28697128,  0.00377739,  0.40787108]])"
+      ]
+     },
+     "execution_count": 376,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data[names != 'Akshay'] #Select everything except Akshay"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 381,
+   "id": "bf863cf7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mask = (names == 'Chavo') | (names == 'Wade')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 383,
+   "id": "5d8721df",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([False, False, False,  True, False,  True, False])"
+      ]
+     },
+     "execution_count": 383,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mask"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 382,
+   "id": "b3a880c6",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[-1.0762005 ,  0.96094643, -0.16795883, -0.75962566],\n",
+       "       [ 0.55259956,  1.92223808, -0.98763991,  0.58423728]])"
+      ]
+     },
+     "execution_count": 382,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data[mask]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 386,
+   "id": "3bdd38a1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#&means and and | means or"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 387,
+   "id": "cf8775e8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data[data < 0] = 0 #setting the values in array which are less than 0 to O is very easy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 388,
+   "id": "eb4031d0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1.20347646, 1.00202998, 1.19999391, 0.        ],\n",
+       "       [0.48143999, 0.71599769, 0.98416092, 0.        ],\n",
+       "       [0.        , 0.12230214, 0.        , 0.        ],\n",
+       "       [0.        , 0.96094643, 0.        , 0.        ],\n",
+       "       [0.        , 0.84202832, 0.        , 0.803194  ],\n",
+       "       [0.55259956, 1.92223808, 0.        , 0.58423728],\n",
+       "       [0.03966446, 0.        , 0.00377739, 0.40787108]])"
+      ]
+     },
+     "execution_count": 388,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 389,
+   "id": "39a040cc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data[names != 'Chavo'] = 11"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 390,
+   "id": "d5dbf52e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[11.        , 11.        , 11.        , 11.        ],\n",
+       "       [11.        , 11.        , 11.        , 11.        ],\n",
+       "       [11.        , 11.        , 11.        , 11.        ],\n",
+       "       [11.        , 11.        , 11.        , 11.        ],\n",
+       "       [11.        , 11.        , 11.        , 11.        ],\n",
+       "       [ 0.55259956,  1.92223808,  0.        ,  0.58423728],\n",
+       "       [11.        , 11.        , 11.        , 11.        ]])"
+      ]
+     },
+     "execution_count": 390,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2de5ef8a",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dfede63c",
+   "metadata": {},
+   "source": [
+    "# FANCY INDEXING"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ae793c8b",
+   "metadata": {},
+   "source": [
+    "Just see the above indexing: fancy indexing is just another name for using integers as subscripts for indexing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3a16fad4",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3c032b7a",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b2bd52cc",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "167426d2",
+   "metadata": {},
+   "source": [
+    "# MATHEMATICS"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 205,
+   "id": "d4bf5c99",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0.98840139, 0.47259484, 0.28570436, 0.56772271, 0.03994461])"
+      ]
+     },
+     "execution_count": 205,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.rand(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 207,
+   "id": "013c7820",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([-0.22864974,  0.83746812,  0.23638341,  1.12562378, -0.41188729])"
+      ]
+     },
+     "execution_count": 207,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.randn(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 230,
+   "id": "80c58239",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "7"
+      ]
+     },
+     "execution_count": 230,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.randint(5,60) #generates one Integer in given range"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 233,
+   "id": "a59bbd09",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[37, 38, 37, 46],\n",
+       "       [32, 55, 50, 37],\n",
+       "       [45, 33, 24, 49],\n",
+       "       [16, 53, 51, 14]])"
+      ]
+     },
+     "execution_count": 233,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.randint(5,60,(4,4)) #in case we need int and matrix size also specified"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 231,
+   "id": "a4c907f9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[-0.49262348,  0.09256444,  1.51519922],\n",
+       "        [-0.15072443, -0.71302141, -0.92254134]],\n",
+       "\n",
+       "       [[-0.57914326, -0.69345966, -2.48228628],\n",
+       "        [ 1.23451152,  1.29957536,  0.03393316]]])"
+      ]
+     },
+     "execution_count": 231,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.randn(2,2,3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "aac25572",
+   "metadata": {},
+   "source": [
+    "ufunc: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 218,
+   "id": "208bb42f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "base_data3 = (np.random.random((5,5)) - 0.5)*100"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 219,
+   "id": "ce67f668",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[-31.29430386,  41.74310739,  11.78024634, -31.85014513,\n",
+       "        -41.2223305 ],\n",
+       "       [  0.8151847 ,  -1.74066818,  -7.4506234 ,   4.83125003,\n",
+       "        -20.13102562],\n",
+       "       [-27.7960324 ,  12.30042692,  14.73548452,  25.78667957,\n",
+       "         22.61018842],\n",
+       "       [  4.65115721,  17.5122358 , -13.78526992,  13.95630698,\n",
+       "         37.9444545 ],\n",
+       "       [ -5.82723521, -15.53973752,  21.8827913 , -23.00103351,\n",
+       "        -28.61815082]])"
+      ]
+     },
+     "execution_count": 219,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 395,
+   "id": "8b3990f7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "-41.22233049828866"
+      ]
+     },
+     "execution_count": 395,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.amin(base_data3) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 221,
+   "id": "1150982f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "41.74310738509538"
+      ]
+     },
+     "execution_count": 221,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.amax(base_data3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 396,
+   "id": "e3fea3c8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#fmax and fmin will ignore if there is any NaN value in dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 222,
+   "id": "3159b56e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "-0.7082816960789009"
+      ]
+     },
+     "execution_count": 222,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.average(base_data3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 223,
+   "id": "1785cd8a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "-17.707042401972522"
+      ]
+     },
+     "execution_count": 223,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sum(base_data3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 224,
+   "id": "c59d9a5e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.12132306, -0.78481831, -0.70762004, -0.42070164,  0.37242999],\n",
+       "       [ 0.72785227, -0.98560644, -0.91974805, -0.99294434, -0.95843621],\n",
+       "       [-0.46027193, -0.2628199 ,  0.82628441,  0.60831695, -0.58025345],\n",
+       "       [-0.99812592, -0.97286802, -0.93872054,  0.98368937,  0.24288873],\n",
+       "       [ 0.44031555, -0.16743341,  0.10814536,  0.84677064,  0.33708309]])"
+      ]
+     },
+     "execution_count": 224,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sin(base_data3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 235,
+   "id": "92df609e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = np.random.randint(4,100,(5,5))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 236,
+   "id": "69c9d86f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[77,  5, 97, 98, 41],\n",
+       "       [53, 15, 68, 46, 32],\n",
+       "       [45, 76, 11, 53, 54],\n",
+       "       [54, 91, 44, 80, 85],\n",
+       "       [46, 33, 13, 75, 24]])"
+      ]
+     },
+     "execution_count": 236,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 244,
+   "id": "f47d9799",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[5929,   25, 9409, 9604, 1681],\n",
+       "       [2809,  225, 4624, 2116, 1024],\n",
+       "       [2025, 5776,  121, 2809, 2916],\n",
+       "       [2916, 8281, 1936, 6400, 7225],\n",
+       "       [2116, 1089,  169, 5625,  576]])"
+      ]
+     },
+     "execution_count": 244,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr * arr #self multiplication"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 247,
+   "id": "301bea8b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = arr - arr #self substraction"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 246,
+   "id": "3991a397",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0, 0, 0, 0, 0],\n",
+       "       [0, 0, 0, 0, 0],\n",
+       "       [0, 0, 0, 0, 0],\n",
+       "       [0, 0, 0, 0, 0],\n",
+       "       [0, 0, 0, 0, 0]])"
+      ]
+     },
+     "execution_count": 246,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 255,
+   "id": "297623d1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = np.linspace(1,10,9)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 256,
+   "id": "535da91a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = arr.reshape(3,-1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 257,
+   "id": "d1000308",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.   ,  2.125,  3.25 ],\n",
+       "       [ 4.375,  5.5  ,  6.625],\n",
+       "       [ 7.75 ,  8.875, 10.   ]])"
+      ]
+     },
+     "execution_count": 257,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 258,
+   "id": "c2c3ccb7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "div = arr / arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 259,
+   "id": "09609116",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1., 1., 1.],\n",
+       "       [1., 1., 1.],\n",
+       "       [1., 1., 1.]])"
+      ]
+     },
+     "execution_count": 259,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "div"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 260,
+   "id": "2451188c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[51.   , 52.125, 53.25 ],\n",
+       "       [54.375, 55.5  , 56.625],\n",
+       "       [57.75 , 58.875, 60.   ]])"
+      ]
+     },
+     "execution_count": 260,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr + 50 #Adds to all the elements individually."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 261,
+   "id": "fc29abe1",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 2.  ,  4.25,  6.5 ],\n",
+       "       [ 8.75, 11.  , 13.25],\n",
+       "       [15.5 , 17.75, 20.  ]])"
+      ]
+     },
+     "execution_count": 261,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr * 2 #multiplies"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 264,
+   "id": "272a9e2a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 35.484375,  42.65625 ,  49.828125],\n",
+       "       [ 79.78125 ,  98.34375 , 116.90625 ],\n",
+       "       [124.078125, 154.03125 , 183.984375]])"
+      ]
+     },
+     "execution_count": 264,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr@arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 267,
+   "id": "a3becf76",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1.        , 1.45773797, 1.80277564],\n",
+       "       [2.09165007, 2.34520788, 2.57390754],\n",
+       "       [2.78388218, 2.97909382, 3.16227766]])"
+      ]
+     },
+     "execution_count": 267,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sqrt(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 268,
+   "id": "6731fbf1",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[2.71828183e+00, 8.37289749e+00, 2.57903399e+01],\n",
+       "       [7.94398396e+01, 2.44691932e+02, 7.53704213e+02],\n",
+       "       [2.32157241e+03, 7.15094647e+03, 2.20264658e+04]])"
+      ]
+     },
+     "execution_count": 268,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.exp(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 270,
+   "id": "46a58e2d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0.        , 0.7537718 , 1.178655  ],\n",
+       "       [1.47590652, 1.70474809, 1.89085037],\n",
+       "       [2.04769284, 2.18323834, 2.30258509]])"
+      ]
+     },
+     "execution_count": 270,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.log(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 273,
+   "id": "c84ba0d6",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2.9047375096555625"
+      ]
+     },
+     "execution_count": 273,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.std(arr) #Standard deviation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 277,
+   "id": "a6e7bb0d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.   ,  4.375,  7.75 ],\n",
+       "       [ 2.125,  5.5  ,  8.875],\n",
+       "       [ 3.25 ,  6.625, 10.   ]])"
+      ]
+     },
+     "execution_count": 277,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.T  #Transpose"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 352,
+   "id": "c4e9cc2d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.25"
+      ]
+     },
+     "execution_count": 352,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.percentile(arr, 25)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 353,
+   "id": "14292b4b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "5.5"
+      ]
+     },
+     "execution_count": 353,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.median(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 355,
+   "id": "25447b60",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "7.75"
+      ]
+     },
+     "execution_count": 355,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    " np.percentile(arr, 75)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 422,
+   "id": "1b110ed6",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([13.125, 16.5  , 19.875])"
+      ]
+     },
+     "execution_count": 422,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.sum(0) #column"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 423,
+   "id": "3e0a6460",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 6.375, 16.5  , 26.625])"
+      ]
+     },
+     "execution_count": 423,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.sum(1) #row sum"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 424,
+   "id": "9635d005",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.   ,  2.125,  3.25 ],\n",
+       "       [ 5.375,  7.625,  9.875],\n",
+       "       [13.125, 16.5  , 19.875]])"
+      ]
+     },
+     "execution_count": 424,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.cumsum(0) #cumulative sum of row"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 425,
+   "id": "a32a19e3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.   ,  2.125,  3.25 ],\n",
+       "       [ 4.375,  5.5  ,  6.625],\n",
+       "       [ 7.75 ,  8.875, 10.   ]])"
+      ]
+     },
+     "execution_count": 425,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 426,
+   "id": "808cbf5a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.   ,  3.125,  6.375],\n",
+       "       [ 4.375,  9.875, 16.5  ],\n",
+       "       [ 7.75 , 16.625, 26.625]])"
+      ]
+     },
+     "execution_count": 426,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.cumsum(1) #cumulative sum of columns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "811090c8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Similary we have cumprod() method"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 427,
+   "id": "b9b24b8b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "8"
+      ]
+     },
+     "execution_count": 427,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(arr>1).sum() "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2bed51ae",
+   "metadata": {},
+   "source": [
+    "# RANDOM NUMBER"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "63e9b6cf",
+   "metadata": {},
+   "source": [
+    "to generate 20 random numbers, each of which is between [0.0, 1.0)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 304,
+   "id": "bc0eff7b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0.25299268, 0.37933329, 0.60453883, 0.77237876, 0.0679175 ,\n",
+       "       0.68608508, 0.5482601 , 0.13798605, 0.09875322, 0.24555911,\n",
+       "       0.15178666, 0.92599448, 0.68010502, 0.23765892, 0.56888525,\n",
+       "       0.55663205, 0.07273721, 0.83970851, 0.40531949, 0.14487099])"
+      ]
+     },
+     "execution_count": 304,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.random(20)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ae1b285c",
+   "metadata": {},
+   "source": [
+    "to generate a random number based on the specified shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 305,
+   "id": "a7fb680c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0.19092006, 0.49064014, 0.71202437, 0.98493846],\n",
+       "       [0.8747865 , 0.49904168, 0.10677999, 0.91321281],\n",
+       "       [0.36491596, 0.22658788, 0.87243186, 0.13635835]])"
+      ]
+     },
+     "execution_count": 305,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.rand(3, 4)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "744cb793",
+   "metadata": {},
+   "source": [
+    "to generate a specified number (such as 20) of random integers within the specified range (such as [0, 100))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 307,
+   "id": "4503da74",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([24, 63, 74, 28, 55, 56, 91, 47, 76, 48, 67,  4, 87, 88, 77, 45, 54,\n",
+       "       27, 95, 31])"
+      ]
+     },
+     "execution_count": 307,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.randint(0, 100, 20)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8b0a8fb",
+   "metadata": {},
+   "source": [
+    "The Philosophy of determinism shall better explain the seed function. Now seed generated pseudo-random number that means- whatever integer we pass as argument in seed function will generate a random digit number which will be same in all computers."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 295,
+   "id": "7f5f7377",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0.77770241, 0.23754122, 0.82427853, 0.9657492 , 0.97260111],\n",
+       "       [0.45344925, 0.60904246, 0.77552651, 0.64161334, 0.72201823],\n",
+       "       [0.03503652, 0.29844947, 0.05851249, 0.85706094, 0.37285403],\n",
+       "       [0.67984795, 0.25627995, 0.34758122, 0.00941277, 0.35833378],\n",
+       "       [0.94909418, 0.21789901, 0.31939137, 0.91777239, 0.03190367]])"
+      ]
+     },
+     "execution_count": 295,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.seed(13) \n",
+    "np.random.rand(5,5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "92c4041c",
+   "metadata": {},
+   "source": [
+    "to disorder the sequence of the existing data ([0, 1, 2, ..., 19]) randomly The output is as follows:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 311,
+   "id": "a85d5808",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([10,  3,  2,  1, 17,  6, 18,  7, 15,  4, 19, 13,  5,  0, 14,  8, 11,\n",
+       "       16,  9, 12])"
+      ]
+     },
+     "execution_count": 311,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.random.permutation(np.arange(20))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "03c9c1a7",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ff753bb6",
+   "metadata": {},
+   "source": [
+    "# MATRIX"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 292,
+   "id": "e9bf803d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "base_data = np.floor((np.random.random((5,5))-0.5)*100)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 293,
+   "id": "fa80d5ea",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 14.,  22., -47., -21., -45.],\n",
+       "       [ 35., -13.,  17., -25., -16.],\n",
+       "       [-50., -15.,  44., -29., -19.],\n",
+       "       [ 41., -47., -44.,  12.,  37.],\n",
+       "       [-50.,  24.,  31., -43.,  15.]])"
+      ]
+     },
+     "execution_count": 293,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "base_data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 296,
+   "id": "12fc15dc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "matrix_one = np.ones((5,5))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 297,
+   "id": "73ea7c3d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1., 1., 1., 1., 1.],\n",
+       "       [1., 1., 1., 1., 1.],\n",
+       "       [1., 1., 1., 1., 1.],\n",
+       "       [1., 1., 1., 1., 1.],\n",
+       "       [1., 1., 1., 1., 1.]])"
+      ]
+     },
+     "execution_count": 297,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "matrix_one"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 300,
+   "id": "ffeffabe",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "minus_one = np.dot(matrix_one,-1) #dot will do multiplication"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 301,
+   "id": "5c4ef483",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[-1., -1., -1., -1., -1.],\n",
+       "       [-1., -1., -1., -1., -1.],\n",
+       "       [-1., -1., -1., -1., -1.],\n",
+       "       [-1., -1., -1., -1., -1.],\n",
+       "       [-1., -1., -1., -1., -1.]])"
+      ]
+     },
+     "execution_count": 301,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "minus_one"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5534cc13",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 312,
+   "id": "4523545c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "l=[1,2,2,3,5,4]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 313,
+   "id": "9476c1c0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 2, 3, 5, 4])"
+      ]
+     },
+     "execution_count": 313,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.array(l)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 314,
+   "id": "b11cfdc9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 2, 3, 5, 4])"
+      ]
+     },
+     "execution_count": 314,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.asarray(l)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 73,
+   "id": "03ffb5a8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 2, 3, 5, 4])"
+      ]
+     },
+     "execution_count": 73,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.asanyarray(l)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 315,
+   "id": "fe305ea6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Matrix is subset of array thus\n",
+    "#as any array will first check if the parameter passed is already in form of some arry and return same\n",
+    "#asarray= will return array while asanyarray will return matrix if passed input is matrix"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "544e33d7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "met = numpy.matrix([[1,2,3],[5,6,7]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "44f8986a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "matrix([[1, 2, 3],\n",
+       "        [5, 6, 7]])"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "numpy.asanyarray(met)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "9c962452",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#here it returns mat since mat is already an array form"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "f90a0fba",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 2, 3, 5, 4])"
+      ]
+     },
+     "execution_count": 58,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "numpy.asanyarray(l)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "8a0299ae",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#l is in the list form"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "e608ab0c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3],\n",
+       "       [5, 6, 7]])"
+      ]
+     },
+     "execution_count": 60,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "numpy.asarray(met)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "bc3454a9",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 316,
+   "id": "b75adf8e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 316,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "issubclass(np.matrix, np.ndarray)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 317,
+   "id": "96f24812",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 317,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "issubclass(np.ndarray,np.matrix)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "81aa550e",
+   "metadata": {},
+   "source": [
+    "#### array are mutable entity"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 322,
+   "id": "ecba5efa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "array_1 = np.array([[1,2],[3,4]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 323,
+   "id": "33c0c282",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2],\n",
+       "       [3, 4]])"
+      ]
+     },
+     "execution_count": 323,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "array_1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 324,
+   "id": "0b5a0355",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1"
+      ]
+     },
+     "execution_count": 324,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "array_1[0][0] "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 326,
+   "id": "488485c9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "array_1[0][0] = 100 \n",
+    "#shallow copy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 327,
+   "id": "8d09c68b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[100,   2],\n",
+       "       [  3,   4]])"
+      ]
+     },
+     "execution_count": 327,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "array_1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 328,
+   "id": "d6434879",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new = np.copy(array_1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 329,
+   "id": "8d1baee2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[100,   2],\n",
+       "       [  3,   4]])"
+      ]
+     },
+     "execution_count": 329,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "new"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 331,
+   "id": "e31bc592",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Thus array is mutable entity proved"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "306462af",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "59b3ff74",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "11fa4666",
+   "metadata": {},
+   "source": [
+    "# Functions and More operation:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7cf60043",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 332,
+   "id": "f55a4eb2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[100   2]\n",
+      "[3 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in array_1:\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 333,
+   "id": "0546cf7b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ True, False, False, False],\n",
+       "       [False,  True, False, False],\n",
+       "       [False, False,  True, False],\n",
+       "       [False, False, False,  True]])"
+      ]
+     },
+     "execution_count": 333,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.fromfunction(lambda i, j : i==j, (4,4))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 334,
+   "id": "a11c637f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0, 0, 0],\n",
+       "       [0, 1, 2],\n",
+       "       [0, 2, 4]])"
+      ]
+     },
+     "execution_count": 334,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.fromfunction(lambda i,j : i*j, (3,3), dtype = int)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 336,
+   "id": "dca42bf7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/tmp/ipykernel_17655/1121113546.py:1: RuntimeWarning: divide by zero encountered in floor_divide\n",
+      "  np.fromfunction(lambda i,j : i//j,(3,3), dtype = int )\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "array([[0, 0, 0],\n",
+       "       [0, 1, 0],\n",
+       "       [0, 2, 1]])"
+      ]
+     },
+     "execution_count": 336,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.fromfunction(lambda i,j : i//j,(3,3), dtype = int )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 337,
+   "id": "520c7010",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/tmp/ipykernel_17655/1731183069.py:1: RuntimeWarning: divide by zero encountered in floor_divide\n",
+      "  np.fromfunction(lambda i,j : i//j,(3,3))\n",
+      "/tmp/ipykernel_17655/1731183069.py:1: RuntimeWarning: invalid value encountered in floor_divide\n",
+      "  np.fromfunction(lambda i,j : i//j,(3,3))\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "array([[nan,  0.,  0.],\n",
+       "       [inf,  1.,  0.],\n",
+       "       [inf,  2.,  1.]])"
+      ]
+     },
+     "execution_count": 337,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.fromfunction(lambda i,j : i//j,(3,3))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 339,
+   "id": "e751eeb2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "gen = (i*i for i in range(5))\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 340,
+   "id": "39c0628f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def test(x):\n",
+    "    yield x"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 341,
+   "id": "5e7fcc35",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<generator object test at 0x7f790bb40580>"
+      ]
+     },
+     "execution_count": 341,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "test(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 342,
+   "id": "4d807886",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 0,  1,  4,  9, 16])"
+      ]
+     },
+     "execution_count": 342,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    " np.fromiter(gen, dtype = int)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 343,
+   "id": "3d08154c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<generator object <genexpr> at 0x7f790bb402e0>"
+      ]
+     },
+     "execution_count": 343,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "gen"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 344,
+   "id": "33ad9e41",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for i in gen:\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 345,
+   "id": "a76a710e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 3, 4, 5])"
+      ]
+     },
+     "execution_count": 345,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.fromstring('1,2,3,4,5', sep = ',', dtype = int)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 346,
+   "id": "7aab6aa5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ar_a = np.array(l)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 347,
+   "id": "331bbdaa",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 2, 3, 5, 4])"
+      ]
+     },
+     "execution_count": 347,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ar_a"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 348,
+   "id": "0b448c00",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ar_b = np. array([[5,7,8,9,4],[45,78,5,5,4]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "733a4f77",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d34b9910",
+   "metadata": {},
+   "source": [
+    "# Broadcasting"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "37140439",
+   "metadata": {},
+   "source": [
+    "Rules of Broadcasting\n",
+    "\n",
+    "Broadcasting in NumPy follows a strict set of rules to determine the interaction between the two arrays:\n",
+    "\n",
+    "• Rule 1: If the two arrays differ in their number of dimensions, the shape of the one with fewer dimensions is padded with ones on its leading (left) side.\n",
+    "\n",
+    "• Rule 2: If the shape of the two arrays does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.\n",
+    "\n",
+    "• Rule 3: If in any dimension the sizes disagree and neither is equal to 1, an error is raised.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "eea57317",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9631d5ed",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "11500056",
+   "metadata": {},
+   "source": [
+    "# UNIVERSAL FUNCTIONS: alias ufunc"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0583bd21",
+   "metadata": {},
+   "source": [
+    "performs elementwise operations on data in ndarray (Already convered in maths this is rather a summary )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f441712a",
+   "metadata": {},
+   "source": [
+    "#unary\n",
+    "1. abs, fabs : absolute value\n",
+    "2. sqrt\n",
+    "3. square\n",
+    "4. exp\n",
+    "5. log, log10, lop2\n",
+    "6. sign : Computes the sign of each element\n",
+    "7. ceil and floor\n",
+    "8. rint: round to nearest intiger\n",
+    "9. modf:\n",
+    "10. isnan: returns whether the value is nan\n",
+    "11. isfinite and isinf\n",
+    "12. cos cosh sin sinh\n",
+    "13. arccos arcsin inverse\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "980dd3c4",
+   "metadata": {},
+   "source": [
+    "#Binary\n",
+    "1. add\n",
+    "2. subtract\n",
+    "3. multiply\n",
+    "4. divide, floor_divide\n",
+    "5. power\n",
+    "6. maximum, fmax\n",
+    "7. minimun, fmin\n",
+    "8. mod\n",
+    "9. greater or greater_equal\n",
+    "10. not_equal\n",
+    "11. logical_and , logical_or, logical_xor"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6c373d8a",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "53afee31",
+   "metadata": {},
+   "source": [
+    "# DATA PROCESSING USING ARRAYS"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "afcc63c7",
+   "metadata": {},
+   "source": [
+    "###### Vectorization: Replacing explicit loops with array expressions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 399,
+   "id": "624b9c54",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "points = np.arange(-5,5,0.01) #1000 equally spaced points"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 401,
+   "id": "c8eea061",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([-5.0000000e+00, -4.9900000e+00, -4.9800000e+00, -4.9700000e+00,\n",
+       "       -4.9600000e+00, -4.9500000e+00, -4.9400000e+00, -4.9300000e+00,\n",
+       "       -4.9200000e+00, -4.9100000e+00, -4.9000000e+00, -4.8900000e+00,\n",
+       "       -4.8800000e+00, -4.8700000e+00, -4.8600000e+00, -4.8500000e+00,\n",
+       "       -4.8400000e+00, -4.8300000e+00, -4.8200000e+00, -4.8100000e+00,\n",
+       "       -4.8000000e+00, -4.7900000e+00, -4.7800000e+00, -4.7700000e+00,\n",
+       "       -4.7600000e+00, -4.7500000e+00, -4.7400000e+00, -4.7300000e+00,\n",
+       "       -4.7200000e+00, -4.7100000e+00, -4.7000000e+00, -4.6900000e+00,\n",
+       "       -4.6800000e+00, -4.6700000e+00, -4.6600000e+00, -4.6500000e+00,\n",
+       "       -4.6400000e+00, -4.6300000e+00, -4.6200000e+00, -4.6100000e+00,\n",
+       "       -4.6000000e+00, -4.5900000e+00, -4.5800000e+00, -4.5700000e+00,\n",
+       "       -4.5600000e+00, -4.5500000e+00, -4.5400000e+00, -4.5300000e+00,\n",
+       "       -4.5200000e+00, -4.5100000e+00, -4.5000000e+00, -4.4900000e+00,\n",
+       "       -4.4800000e+00, -4.4700000e+00, -4.4600000e+00, -4.4500000e+00,\n",
+       "       -4.4400000e+00, -4.4300000e+00, -4.4200000e+00, -4.4100000e+00,\n",
+       "       -4.4000000e+00, -4.3900000e+00, -4.3800000e+00, -4.3700000e+00,\n",
+       "       -4.3600000e+00, -4.3500000e+00, -4.3400000e+00, -4.3300000e+00,\n",
+       "       -4.3200000e+00, -4.3100000e+00, -4.3000000e+00, -4.2900000e+00,\n",
+       "       -4.2800000e+00, -4.2700000e+00, -4.2600000e+00, -4.2500000e+00,\n",
+       "       -4.2400000e+00, -4.2300000e+00, -4.2200000e+00, -4.2100000e+00,\n",
+       "       -4.2000000e+00, -4.1900000e+00, -4.1800000e+00, -4.1700000e+00,\n",
+       "       -4.1600000e+00, -4.1500000e+00, -4.1400000e+00, -4.1300000e+00,\n",
+       "       -4.1200000e+00, -4.1100000e+00, -4.1000000e+00, -4.0900000e+00,\n",
+       "       -4.0800000e+00, -4.0700000e+00, -4.0600000e+00, -4.0500000e+00,\n",
+       "       -4.0400000e+00, -4.0300000e+00, -4.0200000e+00, -4.0100000e+00,\n",
+       "       -4.0000000e+00, -3.9900000e+00, -3.9800000e+00, -3.9700000e+00,\n",
+       "       -3.9600000e+00, -3.9500000e+00, -3.9400000e+00, -3.9300000e+00,\n",
+       "       -3.9200000e+00, -3.9100000e+00, -3.9000000e+00, -3.8900000e+00,\n",
+       "       -3.8800000e+00, -3.8700000e+00, -3.8600000e+00, -3.8500000e+00,\n",
+       "       -3.8400000e+00, -3.8300000e+00, -3.8200000e+00, -3.8100000e+00,\n",
+       "       -3.8000000e+00, -3.7900000e+00, -3.7800000e+00, -3.7700000e+00,\n",
+       "       -3.7600000e+00, -3.7500000e+00, -3.7400000e+00, -3.7300000e+00,\n",
+       "       -3.7200000e+00, -3.7100000e+00, -3.7000000e+00, -3.6900000e+00,\n",
+       "       -3.6800000e+00, -3.6700000e+00, -3.6600000e+00, -3.6500000e+00,\n",
+       "       -3.6400000e+00, -3.6300000e+00, -3.6200000e+00, -3.6100000e+00,\n",
+       "       -3.6000000e+00, -3.5900000e+00, -3.5800000e+00, -3.5700000e+00,\n",
+       "       -3.5600000e+00, -3.5500000e+00, -3.5400000e+00, -3.5300000e+00,\n",
+       "       -3.5200000e+00, -3.5100000e+00, -3.5000000e+00, -3.4900000e+00,\n",
+       "       -3.4800000e+00, -3.4700000e+00, -3.4600000e+00, -3.4500000e+00,\n",
+       "       -3.4400000e+00, -3.4300000e+00, -3.4200000e+00, -3.4100000e+00,\n",
+       "       -3.4000000e+00, -3.3900000e+00, -3.3800000e+00, -3.3700000e+00,\n",
+       "       -3.3600000e+00, -3.3500000e+00, -3.3400000e+00, -3.3300000e+00,\n",
+       "       -3.3200000e+00, -3.3100000e+00, -3.3000000e+00, -3.2900000e+00,\n",
+       "       -3.2800000e+00, -3.2700000e+00, -3.2600000e+00, -3.2500000e+00,\n",
+       "       -3.2400000e+00, -3.2300000e+00, -3.2200000e+00, -3.2100000e+00,\n",
+       "       -3.2000000e+00, -3.1900000e+00, -3.1800000e+00, -3.1700000e+00,\n",
+       "       -3.1600000e+00, -3.1500000e+00, -3.1400000e+00, -3.1300000e+00,\n",
+       "       -3.1200000e+00, -3.1100000e+00, -3.1000000e+00, -3.0900000e+00,\n",
+       "       -3.0800000e+00, -3.0700000e+00, -3.0600000e+00, -3.0500000e+00,\n",
+       "       -3.0400000e+00, -3.0300000e+00, -3.0200000e+00, -3.0100000e+00,\n",
+       "       -3.0000000e+00, -2.9900000e+00, -2.9800000e+00, -2.9700000e+00,\n",
+       "       -2.9600000e+00, -2.9500000e+00, -2.9400000e+00, -2.9300000e+00,\n",
+       "       -2.9200000e+00, -2.9100000e+00, -2.9000000e+00, -2.8900000e+00,\n",
+       "       -2.8800000e+00, -2.8700000e+00, -2.8600000e+00, -2.8500000e+00,\n",
+       "       -2.8400000e+00, -2.8300000e+00, -2.8200000e+00, -2.8100000e+00,\n",
+       "       -2.8000000e+00, -2.7900000e+00, -2.7800000e+00, -2.7700000e+00,\n",
+       "       -2.7600000e+00, -2.7500000e+00, -2.7400000e+00, -2.7300000e+00,\n",
+       "       -2.7200000e+00, -2.7100000e+00, -2.7000000e+00, -2.6900000e+00,\n",
+       "       -2.6800000e+00, -2.6700000e+00, -2.6600000e+00, -2.6500000e+00,\n",
+       "       -2.6400000e+00, -2.6300000e+00, -2.6200000e+00, -2.6100000e+00,\n",
+       "       -2.6000000e+00, -2.5900000e+00, -2.5800000e+00, -2.5700000e+00,\n",
+       "       -2.5600000e+00, -2.5500000e+00, -2.5400000e+00, -2.5300000e+00,\n",
+       "       -2.5200000e+00, -2.5100000e+00, -2.5000000e+00, -2.4900000e+00,\n",
+       "       -2.4800000e+00, -2.4700000e+00, -2.4600000e+00, -2.4500000e+00,\n",
+       "       -2.4400000e+00, -2.4300000e+00, -2.4200000e+00, -2.4100000e+00,\n",
+       "       -2.4000000e+00, -2.3900000e+00, -2.3800000e+00, -2.3700000e+00,\n",
+       "       -2.3600000e+00, -2.3500000e+00, -2.3400000e+00, -2.3300000e+00,\n",
+       "       -2.3200000e+00, -2.3100000e+00, -2.3000000e+00, -2.2900000e+00,\n",
+       "       -2.2800000e+00, -2.2700000e+00, -2.2600000e+00, -2.2500000e+00,\n",
+       "       -2.2400000e+00, -2.2300000e+00, -2.2200000e+00, -2.2100000e+00,\n",
+       "       -2.2000000e+00, -2.1900000e+00, -2.1800000e+00, -2.1700000e+00,\n",
+       "       -2.1600000e+00, -2.1500000e+00, -2.1400000e+00, -2.1300000e+00,\n",
+       "       -2.1200000e+00, -2.1100000e+00, -2.1000000e+00, -2.0900000e+00,\n",
+       "       -2.0800000e+00, -2.0700000e+00, -2.0600000e+00, -2.0500000e+00,\n",
+       "       -2.0400000e+00, -2.0300000e+00, -2.0200000e+00, -2.0100000e+00,\n",
+       "       -2.0000000e+00, -1.9900000e+00, -1.9800000e+00, -1.9700000e+00,\n",
+       "       -1.9600000e+00, -1.9500000e+00, -1.9400000e+00, -1.9300000e+00,\n",
+       "       -1.9200000e+00, -1.9100000e+00, -1.9000000e+00, -1.8900000e+00,\n",
+       "       -1.8800000e+00, -1.8700000e+00, -1.8600000e+00, -1.8500000e+00,\n",
+       "       -1.8400000e+00, -1.8300000e+00, -1.8200000e+00, -1.8100000e+00,\n",
+       "       -1.8000000e+00, -1.7900000e+00, -1.7800000e+00, -1.7700000e+00,\n",
+       "       -1.7600000e+00, -1.7500000e+00, -1.7400000e+00, -1.7300000e+00,\n",
+       "       -1.7200000e+00, -1.7100000e+00, -1.7000000e+00, -1.6900000e+00,\n",
+       "       -1.6800000e+00, -1.6700000e+00, -1.6600000e+00, -1.6500000e+00,\n",
+       "       -1.6400000e+00, -1.6300000e+00, -1.6200000e+00, -1.6100000e+00,\n",
+       "       -1.6000000e+00, -1.5900000e+00, -1.5800000e+00, -1.5700000e+00,\n",
+       "       -1.5600000e+00, -1.5500000e+00, -1.5400000e+00, -1.5300000e+00,\n",
+       "       -1.5200000e+00, -1.5100000e+00, -1.5000000e+00, -1.4900000e+00,\n",
+       "       -1.4800000e+00, -1.4700000e+00, -1.4600000e+00, -1.4500000e+00,\n",
+       "       -1.4400000e+00, -1.4300000e+00, -1.4200000e+00, -1.4100000e+00,\n",
+       "       -1.4000000e+00, -1.3900000e+00, -1.3800000e+00, -1.3700000e+00,\n",
+       "       -1.3600000e+00, -1.3500000e+00, -1.3400000e+00, -1.3300000e+00,\n",
+       "       -1.3200000e+00, -1.3100000e+00, -1.3000000e+00, -1.2900000e+00,\n",
+       "       -1.2800000e+00, -1.2700000e+00, -1.2600000e+00, -1.2500000e+00,\n",
+       "       -1.2400000e+00, -1.2300000e+00, -1.2200000e+00, -1.2100000e+00,\n",
+       "       -1.2000000e+00, -1.1900000e+00, -1.1800000e+00, -1.1700000e+00,\n",
+       "       -1.1600000e+00, -1.1500000e+00, -1.1400000e+00, -1.1300000e+00,\n",
+       "       -1.1200000e+00, -1.1100000e+00, -1.1000000e+00, -1.0900000e+00,\n",
+       "       -1.0800000e+00, -1.0700000e+00, -1.0600000e+00, -1.0500000e+00,\n",
+       "       -1.0400000e+00, -1.0300000e+00, -1.0200000e+00, -1.0100000e+00,\n",
+       "       -1.0000000e+00, -9.9000000e-01, -9.8000000e-01, -9.7000000e-01,\n",
+       "       -9.6000000e-01, -9.5000000e-01, -9.4000000e-01, -9.3000000e-01,\n",
+       "       -9.2000000e-01, -9.1000000e-01, -9.0000000e-01, -8.9000000e-01,\n",
+       "       -8.8000000e-01, -8.7000000e-01, -8.6000000e-01, -8.5000000e-01,\n",
+       "       -8.4000000e-01, -8.3000000e-01, -8.2000000e-01, -8.1000000e-01,\n",
+       "       -8.0000000e-01, -7.9000000e-01, -7.8000000e-01, -7.7000000e-01,\n",
+       "       -7.6000000e-01, -7.5000000e-01, -7.4000000e-01, -7.3000000e-01,\n",
+       "       -7.2000000e-01, -7.1000000e-01, -7.0000000e-01, -6.9000000e-01,\n",
+       "       -6.8000000e-01, -6.7000000e-01, -6.6000000e-01, -6.5000000e-01,\n",
+       "       -6.4000000e-01, -6.3000000e-01, -6.2000000e-01, -6.1000000e-01,\n",
+       "       -6.0000000e-01, -5.9000000e-01, -5.8000000e-01, -5.7000000e-01,\n",
+       "       -5.6000000e-01, -5.5000000e-01, -5.4000000e-01, -5.3000000e-01,\n",
+       "       -5.2000000e-01, -5.1000000e-01, -5.0000000e-01, -4.9000000e-01,\n",
+       "       -4.8000000e-01, -4.7000000e-01, -4.6000000e-01, -4.5000000e-01,\n",
+       "       -4.4000000e-01, -4.3000000e-01, -4.2000000e-01, -4.1000000e-01,\n",
+       "       -4.0000000e-01, -3.9000000e-01, -3.8000000e-01, -3.7000000e-01,\n",
+       "       -3.6000000e-01, -3.5000000e-01, -3.4000000e-01, -3.3000000e-01,\n",
+       "       -3.2000000e-01, -3.1000000e-01, -3.0000000e-01, -2.9000000e-01,\n",
+       "       -2.8000000e-01, -2.7000000e-01, -2.6000000e-01, -2.5000000e-01,\n",
+       "       -2.4000000e-01, -2.3000000e-01, -2.2000000e-01, -2.1000000e-01,\n",
+       "       -2.0000000e-01, -1.9000000e-01, -1.8000000e-01, -1.7000000e-01,\n",
+       "       -1.6000000e-01, -1.5000000e-01, -1.4000000e-01, -1.3000000e-01,\n",
+       "       -1.2000000e-01, -1.1000000e-01, -1.0000000e-01, -9.0000000e-02,\n",
+       "       -8.0000000e-02, -7.0000000e-02, -6.0000000e-02, -5.0000000e-02,\n",
+       "       -4.0000000e-02, -3.0000000e-02, -2.0000000e-02, -1.0000000e-02,\n",
+       "       -1.0658141e-13,  1.0000000e-02,  2.0000000e-02,  3.0000000e-02,\n",
+       "        4.0000000e-02,  5.0000000e-02,  6.0000000e-02,  7.0000000e-02,\n",
+       "        8.0000000e-02,  9.0000000e-02,  1.0000000e-01,  1.1000000e-01,\n",
+       "        1.2000000e-01,  1.3000000e-01,  1.4000000e-01,  1.5000000e-01,\n",
+       "        1.6000000e-01,  1.7000000e-01,  1.8000000e-01,  1.9000000e-01,\n",
+       "        2.0000000e-01,  2.1000000e-01,  2.2000000e-01,  2.3000000e-01,\n",
+       "        2.4000000e-01,  2.5000000e-01,  2.6000000e-01,  2.7000000e-01,\n",
+       "        2.8000000e-01,  2.9000000e-01,  3.0000000e-01,  3.1000000e-01,\n",
+       "        3.2000000e-01,  3.3000000e-01,  3.4000000e-01,  3.5000000e-01,\n",
+       "        3.6000000e-01,  3.7000000e-01,  3.8000000e-01,  3.9000000e-01,\n",
+       "        4.0000000e-01,  4.1000000e-01,  4.2000000e-01,  4.3000000e-01,\n",
+       "        4.4000000e-01,  4.5000000e-01,  4.6000000e-01,  4.7000000e-01,\n",
+       "        4.8000000e-01,  4.9000000e-01,  5.0000000e-01,  5.1000000e-01,\n",
+       "        5.2000000e-01,  5.3000000e-01,  5.4000000e-01,  5.5000000e-01,\n",
+       "        5.6000000e-01,  5.7000000e-01,  5.8000000e-01,  5.9000000e-01,\n",
+       "        6.0000000e-01,  6.1000000e-01,  6.2000000e-01,  6.3000000e-01,\n",
+       "        6.4000000e-01,  6.5000000e-01,  6.6000000e-01,  6.7000000e-01,\n",
+       "        6.8000000e-01,  6.9000000e-01,  7.0000000e-01,  7.1000000e-01,\n",
+       "        7.2000000e-01,  7.3000000e-01,  7.4000000e-01,  7.5000000e-01,\n",
+       "        7.6000000e-01,  7.7000000e-01,  7.8000000e-01,  7.9000000e-01,\n",
+       "        8.0000000e-01,  8.1000000e-01,  8.2000000e-01,  8.3000000e-01,\n",
+       "        8.4000000e-01,  8.5000000e-01,  8.6000000e-01,  8.7000000e-01,\n",
+       "        8.8000000e-01,  8.9000000e-01,  9.0000000e-01,  9.1000000e-01,\n",
+       "        9.2000000e-01,  9.3000000e-01,  9.4000000e-01,  9.5000000e-01,\n",
+       "        9.6000000e-01,  9.7000000e-01,  9.8000000e-01,  9.9000000e-01,\n",
+       "        1.0000000e+00,  1.0100000e+00,  1.0200000e+00,  1.0300000e+00,\n",
+       "        1.0400000e+00,  1.0500000e+00,  1.0600000e+00,  1.0700000e+00,\n",
+       "        1.0800000e+00,  1.0900000e+00,  1.1000000e+00,  1.1100000e+00,\n",
+       "        1.1200000e+00,  1.1300000e+00,  1.1400000e+00,  1.1500000e+00,\n",
+       "        1.1600000e+00,  1.1700000e+00,  1.1800000e+00,  1.1900000e+00,\n",
+       "        1.2000000e+00,  1.2100000e+00,  1.2200000e+00,  1.2300000e+00,\n",
+       "        1.2400000e+00,  1.2500000e+00,  1.2600000e+00,  1.2700000e+00,\n",
+       "        1.2800000e+00,  1.2900000e+00,  1.3000000e+00,  1.3100000e+00,\n",
+       "        1.3200000e+00,  1.3300000e+00,  1.3400000e+00,  1.3500000e+00,\n",
+       "        1.3600000e+00,  1.3700000e+00,  1.3800000e+00,  1.3900000e+00,\n",
+       "        1.4000000e+00,  1.4100000e+00,  1.4200000e+00,  1.4300000e+00,\n",
+       "        1.4400000e+00,  1.4500000e+00,  1.4600000e+00,  1.4700000e+00,\n",
+       "        1.4800000e+00,  1.4900000e+00,  1.5000000e+00,  1.5100000e+00,\n",
+       "        1.5200000e+00,  1.5300000e+00,  1.5400000e+00,  1.5500000e+00,\n",
+       "        1.5600000e+00,  1.5700000e+00,  1.5800000e+00,  1.5900000e+00,\n",
+       "        1.6000000e+00,  1.6100000e+00,  1.6200000e+00,  1.6300000e+00,\n",
+       "        1.6400000e+00,  1.6500000e+00,  1.6600000e+00,  1.6700000e+00,\n",
+       "        1.6800000e+00,  1.6900000e+00,  1.7000000e+00,  1.7100000e+00,\n",
+       "        1.7200000e+00,  1.7300000e+00,  1.7400000e+00,  1.7500000e+00,\n",
+       "        1.7600000e+00,  1.7700000e+00,  1.7800000e+00,  1.7900000e+00,\n",
+       "        1.8000000e+00,  1.8100000e+00,  1.8200000e+00,  1.8300000e+00,\n",
+       "        1.8400000e+00,  1.8500000e+00,  1.8600000e+00,  1.8700000e+00,\n",
+       "        1.8800000e+00,  1.8900000e+00,  1.9000000e+00,  1.9100000e+00,\n",
+       "        1.9200000e+00,  1.9300000e+00,  1.9400000e+00,  1.9500000e+00,\n",
+       "        1.9600000e+00,  1.9700000e+00,  1.9800000e+00,  1.9900000e+00,\n",
+       "        2.0000000e+00,  2.0100000e+00,  2.0200000e+00,  2.0300000e+00,\n",
+       "        2.0400000e+00,  2.0500000e+00,  2.0600000e+00,  2.0700000e+00,\n",
+       "        2.0800000e+00,  2.0900000e+00,  2.1000000e+00,  2.1100000e+00,\n",
+       "        2.1200000e+00,  2.1300000e+00,  2.1400000e+00,  2.1500000e+00,\n",
+       "        2.1600000e+00,  2.1700000e+00,  2.1800000e+00,  2.1900000e+00,\n",
+       "        2.2000000e+00,  2.2100000e+00,  2.2200000e+00,  2.2300000e+00,\n",
+       "        2.2400000e+00,  2.2500000e+00,  2.2600000e+00,  2.2700000e+00,\n",
+       "        2.2800000e+00,  2.2900000e+00,  2.3000000e+00,  2.3100000e+00,\n",
+       "        2.3200000e+00,  2.3300000e+00,  2.3400000e+00,  2.3500000e+00,\n",
+       "        2.3600000e+00,  2.3700000e+00,  2.3800000e+00,  2.3900000e+00,\n",
+       "        2.4000000e+00,  2.4100000e+00,  2.4200000e+00,  2.4300000e+00,\n",
+       "        2.4400000e+00,  2.4500000e+00,  2.4600000e+00,  2.4700000e+00,\n",
+       "        2.4800000e+00,  2.4900000e+00,  2.5000000e+00,  2.5100000e+00,\n",
+       "        2.5200000e+00,  2.5300000e+00,  2.5400000e+00,  2.5500000e+00,\n",
+       "        2.5600000e+00,  2.5700000e+00,  2.5800000e+00,  2.5900000e+00,\n",
+       "        2.6000000e+00,  2.6100000e+00,  2.6200000e+00,  2.6300000e+00,\n",
+       "        2.6400000e+00,  2.6500000e+00,  2.6600000e+00,  2.6700000e+00,\n",
+       "        2.6800000e+00,  2.6900000e+00,  2.7000000e+00,  2.7100000e+00,\n",
+       "        2.7200000e+00,  2.7300000e+00,  2.7400000e+00,  2.7500000e+00,\n",
+       "        2.7600000e+00,  2.7700000e+00,  2.7800000e+00,  2.7900000e+00,\n",
+       "        2.8000000e+00,  2.8100000e+00,  2.8200000e+00,  2.8300000e+00,\n",
+       "        2.8400000e+00,  2.8500000e+00,  2.8600000e+00,  2.8700000e+00,\n",
+       "        2.8800000e+00,  2.8900000e+00,  2.9000000e+00,  2.9100000e+00,\n",
+       "        2.9200000e+00,  2.9300000e+00,  2.9400000e+00,  2.9500000e+00,\n",
+       "        2.9600000e+00,  2.9700000e+00,  2.9800000e+00,  2.9900000e+00,\n",
+       "        3.0000000e+00,  3.0100000e+00,  3.0200000e+00,  3.0300000e+00,\n",
+       "        3.0400000e+00,  3.0500000e+00,  3.0600000e+00,  3.0700000e+00,\n",
+       "        3.0800000e+00,  3.0900000e+00,  3.1000000e+00,  3.1100000e+00,\n",
+       "        3.1200000e+00,  3.1300000e+00,  3.1400000e+00,  3.1500000e+00,\n",
+       "        3.1600000e+00,  3.1700000e+00,  3.1800000e+00,  3.1900000e+00,\n",
+       "        3.2000000e+00,  3.2100000e+00,  3.2200000e+00,  3.2300000e+00,\n",
+       "        3.2400000e+00,  3.2500000e+00,  3.2600000e+00,  3.2700000e+00,\n",
+       "        3.2800000e+00,  3.2900000e+00,  3.3000000e+00,  3.3100000e+00,\n",
+       "        3.3200000e+00,  3.3300000e+00,  3.3400000e+00,  3.3500000e+00,\n",
+       "        3.3600000e+00,  3.3700000e+00,  3.3800000e+00,  3.3900000e+00,\n",
+       "        3.4000000e+00,  3.4100000e+00,  3.4200000e+00,  3.4300000e+00,\n",
+       "        3.4400000e+00,  3.4500000e+00,  3.4600000e+00,  3.4700000e+00,\n",
+       "        3.4800000e+00,  3.4900000e+00,  3.5000000e+00,  3.5100000e+00,\n",
+       "        3.5200000e+00,  3.5300000e+00,  3.5400000e+00,  3.5500000e+00,\n",
+       "        3.5600000e+00,  3.5700000e+00,  3.5800000e+00,  3.5900000e+00,\n",
+       "        3.6000000e+00,  3.6100000e+00,  3.6200000e+00,  3.6300000e+00,\n",
+       "        3.6400000e+00,  3.6500000e+00,  3.6600000e+00,  3.6700000e+00,\n",
+       "        3.6800000e+00,  3.6900000e+00,  3.7000000e+00,  3.7100000e+00,\n",
+       "        3.7200000e+00,  3.7300000e+00,  3.7400000e+00,  3.7500000e+00,\n",
+       "        3.7600000e+00,  3.7700000e+00,  3.7800000e+00,  3.7900000e+00,\n",
+       "        3.8000000e+00,  3.8100000e+00,  3.8200000e+00,  3.8300000e+00,\n",
+       "        3.8400000e+00,  3.8500000e+00,  3.8600000e+00,  3.8700000e+00,\n",
+       "        3.8800000e+00,  3.8900000e+00,  3.9000000e+00,  3.9100000e+00,\n",
+       "        3.9200000e+00,  3.9300000e+00,  3.9400000e+00,  3.9500000e+00,\n",
+       "        3.9600000e+00,  3.9700000e+00,  3.9800000e+00,  3.9900000e+00,\n",
+       "        4.0000000e+00,  4.0100000e+00,  4.0200000e+00,  4.0300000e+00,\n",
+       "        4.0400000e+00,  4.0500000e+00,  4.0600000e+00,  4.0700000e+00,\n",
+       "        4.0800000e+00,  4.0900000e+00,  4.1000000e+00,  4.1100000e+00,\n",
+       "        4.1200000e+00,  4.1300000e+00,  4.1400000e+00,  4.1500000e+00,\n",
+       "        4.1600000e+00,  4.1700000e+00,  4.1800000e+00,  4.1900000e+00,\n",
+       "        4.2000000e+00,  4.2100000e+00,  4.2200000e+00,  4.2300000e+00,\n",
+       "        4.2400000e+00,  4.2500000e+00,  4.2600000e+00,  4.2700000e+00,\n",
+       "        4.2800000e+00,  4.2900000e+00,  4.3000000e+00,  4.3100000e+00,\n",
+       "        4.3200000e+00,  4.3300000e+00,  4.3400000e+00,  4.3500000e+00,\n",
+       "        4.3600000e+00,  4.3700000e+00,  4.3800000e+00,  4.3900000e+00,\n",
+       "        4.4000000e+00,  4.4100000e+00,  4.4200000e+00,  4.4300000e+00,\n",
+       "        4.4400000e+00,  4.4500000e+00,  4.4600000e+00,  4.4700000e+00,\n",
+       "        4.4800000e+00,  4.4900000e+00,  4.5000000e+00,  4.5100000e+00,\n",
+       "        4.5200000e+00,  4.5300000e+00,  4.5400000e+00,  4.5500000e+00,\n",
+       "        4.5600000e+00,  4.5700000e+00,  4.5800000e+00,  4.5900000e+00,\n",
+       "        4.6000000e+00,  4.6100000e+00,  4.6200000e+00,  4.6300000e+00,\n",
+       "        4.6400000e+00,  4.6500000e+00,  4.6600000e+00,  4.6700000e+00,\n",
+       "        4.6800000e+00,  4.6900000e+00,  4.7000000e+00,  4.7100000e+00,\n",
+       "        4.7200000e+00,  4.7300000e+00,  4.7400000e+00,  4.7500000e+00,\n",
+       "        4.7600000e+00,  4.7700000e+00,  4.7800000e+00,  4.7900000e+00,\n",
+       "        4.8000000e+00,  4.8100000e+00,  4.8200000e+00,  4.8300000e+00,\n",
+       "        4.8400000e+00,  4.8500000e+00,  4.8600000e+00,  4.8700000e+00,\n",
+       "        4.8800000e+00,  4.8900000e+00,  4.9000000e+00,  4.9100000e+00,\n",
+       "        4.9200000e+00,  4.9300000e+00,  4.9400000e+00,  4.9500000e+00,\n",
+       "        4.9600000e+00,  4.9700000e+00,  4.9800000e+00,  4.9900000e+00])"
+      ]
+     },
+     "execution_count": 401,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "points"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cd130d7f",
+   "metadata": {},
+   "source": [
+    "np.meshgrid function takes two 1D arrays and produces two 2D matrices corresponding to all pairs of (x, y) in the two arrays:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 405,
+   "id": "aa8b0446",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "xs, ys = np.meshgrid(points, points) #since it produces two 2D matrices we have assigned them to xs and ys"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 406,
+   "id": "1a38e8e3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 407,
+   "id": "ddc0fb74",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "z = np.sqrt(xs**2 + ys**2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 408,
+   "id": "d8fdb004",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[7.07106781, 7.06400028, 7.05693985, ..., 7.04988652, 7.05693985,\n",
+       "        7.06400028],\n",
+       "       [7.06400028, 7.05692568, 7.04985815, ..., 7.04279774, 7.04985815,\n",
+       "        7.05692568],\n",
+       "       [7.05693985, 7.04985815, 7.04278354, ..., 7.03571603, 7.04278354,\n",
+       "        7.04985815],\n",
+       "       ...,\n",
+       "       [7.04988652, 7.04279774, 7.03571603, ..., 7.0286414 , 7.03571603,\n",
+       "        7.04279774],\n",
+       "       [7.05693985, 7.04985815, 7.04278354, ..., 7.03571603, 7.04278354,\n",
+       "        7.04985815],\n",
+       "       [7.06400028, 7.05692568, 7.04985815, ..., 7.04279774, 7.04985815,\n",
+       "        7.05692568]])"
+      ]
+     },
+     "execution_count": 408,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "z"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 421,
+   "id": "a0c6a769",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Text(0.5, 1.0, 'Image plot of $\\\\sqrt{x^2 + y^2}$ for a grid of values')"
+      ]
+     },
+     "execution_count": 421,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 2 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "plt.imshow(z,cmap=plt.cm.gray); plt.colorbar()\n",
+    "plt.title(\"Image plot of $\\sqrt{x^2 + y^2}$ for a grid of values\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "bf14a7a2",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d8c0cfa7",
+   "metadata": {},
+   "source": [
+    "# SORTING"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 430,
+   "id": "43d4fcbc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = np.random.randn(8)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 431,
+   "id": "41e965ef",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 0.64273131, -0.21250473,  0.92433823, -1.94994399,  0.36999811,\n",
+       "       -0.30364446, -1.89230273,  0.4090175 ])"
+      ]
+     },
+     "execution_count": 431,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 432,
+   "id": "dafe5980",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = np.random.randn(5,3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 433,
+   "id": "d535df86",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[-0.96132475, -0.18501412, -0.37469591],\n",
+       "       [-1.80088537, -0.09521822, -0.21465343],\n",
+       "       [ 0.4657465 ,  1.21970947, -0.11605309],\n",
+       "       [ 1.59328056,  1.10382366, -0.21710205],\n",
+       "       [ 0.81290966, -0.49093415,  1.13753068]])"
+      ]
+     },
+     "execution_count": 433,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 447,
+   "id": "6c759c97",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr.sort(0) #will return the sorted value along axis 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 448,
+   "id": "c5601468",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[-1.80088537, -0.37469591, -0.18501412],\n",
+       "       [-0.96132475, -0.21465343, -0.09521822],\n",
+       "       [-0.49093415,  0.4657465 ,  1.13753068],\n",
+       "       [-0.21710205,  0.81290966,  1.21970947],\n",
+       "       [-0.11605309,  1.10382366,  1.59328056]])"
+      ]
+     },
+     "execution_count": 448,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a81d7f47",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "362daf2d",
+   "metadata": {},
+   "source": [
+    "# File input and output on arrays"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 449,
+   "id": "0ae38e1a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = np.arange(10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 450,
+   "id": "111fa2a2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])"
+      ]
+     },
+     "execution_count": 450,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 451,
+   "id": "7d5a3aaa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.save('array_ofint',arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 453,
+   "id": "d99c7ab7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])"
+      ]
+     },
+     "execution_count": 453,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.load('array_ofint.npy')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 454,
+   "id": "7e40f91f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#to save multiple arrays in zip:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 455,
+   "id": "0eea6faa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.savez('array_archive',a=arr, b=arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 458,
+   "id": "1683565d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arc= np.load('array_archive.npz')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 461,
+   "id": "15f0337f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])"
+      ]
+     },
+     "execution_count": 461,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arc['a']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 462,
+   "id": "7309e4d8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<numpy.lib.npyio.NpzFile at 0x7f7909a9bdf0>"
+      ]
+     },
+     "execution_count": 462,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arc"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 463,
+   "id": "c6f273c4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#npz file we get back the dict like object"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "235e8e74",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5ab852cc",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "014c06d4",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 468,
+   "id": "87d491cc",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c6c41841",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
